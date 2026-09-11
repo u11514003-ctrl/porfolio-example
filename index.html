@@ -1,1205 +1,461 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="台北市立大學心理與諮商學系學生個人作品集">
-
-    <title>我的個人作品集｜心理與諮商學系</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #0b0d12;
-            --card: #12161f;
-            --text: #f5f5f5;
-            --muted: #a5abb5;
-            --green: #a7e66a;
-            --border: rgba(255,255,255,0.1);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Noto Sans TC",
-                "Microsoft JhengHei",
-                sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at 80% 10%,
-                    rgba(167,230,106,0.08),
-                    transparent 30%
-                ),
-                #0b0d12;
-
-            color: var(--text);
-            line-height: 1.8;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                );
-
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1150px;
-            margin: auto;
-        }
-
-        /* 導覽列 */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-
-            padding: 20px 0;
-
-            background: rgba(11,13,18,0.8);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: var(--green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--green);
-        }
-
-        /* 首頁 */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 100px;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .small-title {
-            color: var(--green);
-            letter-spacing: 4px;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 9vw, 8rem);
-            line-height: 0.95;
-            letter-spacing: -5px;
-            margin-bottom: 35px;
-        }
-
-        .hero h1 span {
-            color: var(--green);
-        }
-
-        .hero p {
-            color: var(--muted);
-            max-width: 650px;
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 23px;
-            border-radius: 50px;
-            display: inline-block;
-            transition: 0.3s;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            background: var(--green);
-            color: #10140c;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(167,230,106,0.2);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateY(-3px);
-        }
-
-        /* 區塊 */
-
-        section {
-            padding: 120px 0;
-        }
-
-        .section-number {
-            color: var(--green);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            font-size: clamp(2.3rem, 5vw, 4rem);
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .section-description {
-            color: var(--muted);
-            max-width: 500px;
-            margin-bottom: 50px;
-        }
-
-        /* 關於我 */
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .about-text p {
-            color: var(--muted);
-            margin-bottom: 20px;
-            font-size: 1.03rem;
-        }
-
-        .about-text strong {
-            color: white;
-        }
-
-        .info-card {
-            padding: 35px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: rgba(255,255,255,0.04);
-        }
-
-        .profile-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(167,230,106,0.1);
-            color: var(--green);
-            font-size: 28px;
-
-            margin-bottom: 35px;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-
-            font-size: 0.9rem;
-        }
-
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-
-        .info-list span:first-child {
-            color: var(--muted);
-        }
-
-        /* 技能 */
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .skill {
-            padding: 30px;
-
-            border: 1px solid var(--border);
-            border-radius: 18px;
-
-            background: rgba(255,255,255,0.04);
-
-            transition: 0.4s;
-        }
-
-        .skill:hover {
-            transform: translateY(-6px);
-            border-color: rgba(167,230,106,0.35);
-        }
-
-        .skill-icon {
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-
-        .skill h3 {
-            margin-bottom: 10px;
-        }
-
-        .skill p {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 20px;
-        }
-
-        .tag {
-            padding: 4px 9px;
-            border-radius: 30px;
-            border: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 0.7rem;
-        }
-
-        /* 作品 */
-
-        .projects {
-            display: grid;
-            gap: 20px;
-        }
-
-        .project {
-            display: grid;
-            grid-template-columns: 70px 1fr 40px;
-            align-items: center;
-            gap: 25px;
-
-            padding: 32px;
-
-            border: 1px solid var(--border);
-            border-radius: 20px;
-
-            background: rgba(255,255,255,0.04);
-
-            transition: 0.4s;
-        }
-
-        .project:hover {
-            transform: translateX(6px);
-            background: rgba(255,255,255,0.07);
-            border-color: rgba(167,230,106,0.35);
-        }
-
-        .project-number {
-            color: var(--green);
-            font-family: monospace;
-        }
-
-        .project h3 {
-            font-size: 1.4rem;
-            margin-bottom: 6px;
-        }
-
-        .project p {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .arrow {
-            color: var(--muted);
-            font-size: 1.4rem;
-        }
-
-        .project:hover .arrow {
-            color: var(--green);
-        }
-
-        /* 成長旅程 */
-
-        .timeline {
-            max-width: 800px;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-
-            left: 7px;
-            top: 0;
-            bottom: 0;
-
-            width: 1px;
-            background: var(--border);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 50px;
-            margin-bottom: 50px;
-        }
-
-        .timeline-item::before {
-            content: "";
-
-            position: absolute;
-            left: 0;
-            top: 9px;
-
-            width: 15px;
-            height: 15px;
-
-            border-radius: 50%;
-            background: var(--bg);
-            border: 2px solid var(--green);
-        }
-
-        .year {
-            color: var(--green);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-        }
-
-        .timeline-item p {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        /* 聯絡 */
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: clamp(3rem, 8vw, 7rem);
-            line-height: 1;
-            letter-spacing: -4px;
-            margin-bottom: 30px;
-        }
-
-        .contact h2 span {
-            color: var(--green);
-        }
-
-        .contact p {
-            max-width: 550px;
-            margin: auto;
-            color: var(--muted);
-            margin-bottom: 30px;
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        /* Footer */
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 30px 0;
-            color: var(--muted);
-            font-size: 0.75rem;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        /* 動畫 */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 手機版 */
-
-        @media (max-width: 800px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .skills {
-                grid-template-columns: 1fr;
-            }
-
-            .project {
-                grid-template-columns: 45px 1fr;
-            }
-
-            .arrow {
-                display: none;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .hero h1 {
-                font-size: 3.5rem;
-                letter-spacing: -3px;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .info-card {
-                padding: 25px;
-            }
-
-            .project {
-                padding: 25px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="陳宇彤｜台北市立大學心理與諮商學系個人作品集">
+<title>陳宇彤｜Personal Portfolio</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#090b10;
+  --card:#111620;
+  --card2:#151b27;
+  --text:#f5f7f2;
+  --muted:#a7adb8;
+  --green:#b6ef72;
+  --green2:#8ed64b;
+  --border:rgba(255,255,255,.1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  background:
+    radial-gradient(circle at 80% 8%,rgba(182,239,114,.09),transparent 28%),
+    radial-gradient(circle at 10% 70%,rgba(182,239,114,.04),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.8;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+a{color:inherit;text-decoration:none}
+.container{width:90%;max-width:1150px;margin:auto}
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  padding:18px 0;background:rgba(9,11,16,.78);
+  backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,.06)
+}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:1.15rem;letter-spacing:3px}
+.logo span,.green{color:var(--green)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);font-size:.9rem;transition:.3s}
+.nav-links a:hover{color:var(--green)}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px}
+.hero-content{max-width:900px}
+.small-title{color:var(--green);letter-spacing:4px;font-size:.8rem;margin-bottom:24px}
+.hero h1{
+  font-size:clamp(3.3rem,9vw,7.8rem);line-height:.95;
+  letter-spacing:-5px;margin-bottom:32px
+}
+.hero p{color:var(--muted);max-width:720px;font-size:1.08rem;margin-bottom:30px}
+.quote{
+  border-left:2px solid var(--green);padding-left:18px;
+  color:#dfe5da;margin:0 0 32px;max-width:650px
+}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  padding:11px 22px;border-radius:50px;display:inline-block;
+  transition:.3s;font-size:.9rem;font-weight:800
+}
+.btn-primary{background:var(--green);color:#10140c}
+.btn-primary:hover{background:#c8f891;transform:translateY(-3px)}
+.btn-secondary{border:1px solid var(--border)}
+.btn-secondary:hover{background:rgba(255,255,255,.06);transform:translateY(-3px)}
+section{padding:115px 0}
+.section-number{color:var(--green);font-size:.78rem;letter-spacing:3px;margin-bottom:8px}
+.section-title{font-size:clamp(2.2rem,5vw,4rem);line-height:1.1;margin-bottom:18px}
+.section-description{color:var(--muted);max-width:650px;margin-bottom:48px}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.about-text p{color:var(--muted);margin-bottom:20px;font-size:1.03rem}
+.about-text strong{color:white}
+.info-card{
+  padding:32px;border:1px solid var(--border);border-radius:22px;
+  background:rgba(255,255,255,.04)
+}
+.profile-circle{
+  width:72px;height:72px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;background:rgba(182,239,114,.1);
+  color:var(--green);font-size:28px;margin-bottom:28px
+}
+.info-list{list-style:none}
+.info-list li{
+  display:flex;justify-content:space-between;gap:20px;
+  padding:13px 0;border-bottom:1px solid var(--border);font-size:.9rem
+}
+.info-list li:last-child{border-bottom:none}
+.info-list span:first-child{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  padding:30px;border:1px solid var(--border);border-radius:20px;
+  background:rgba(255,255,255,.04);transition:.4s
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(182,239,114,.4)}
+.card-icon{font-size:30px;margin-bottom:18px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted);font-size:.92rem}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.tag{
+  padding:4px 9px;border-radius:30px;border:1px solid var(--border);
+  color:var(--muted);font-size:.7rem
+}
+.projects{display:grid;gap:18px}
+.project{
+  display:grid;grid-template-columns:65px 1fr 40px;align-items:center;
+  gap:24px;padding:28px 30px;border:1px solid var(--border);
+  border-radius:20px;background:rgba(255,255,255,.04);transition:.4s
+}
+.project:hover{transform:translateX(6px);background:rgba(255,255,255,.07);border-color:rgba(182,239,114,.35)}
+.project-number{color:var(--green);font-family:monospace}
+.project h3{font-size:1.3rem;margin-bottom:5px}
+.project p{color:var(--muted);font-size:.9rem}
+.arrow{color:var(--muted);font-size:1.3rem}
+.project:hover .arrow{color:var(--green)}
+.timeline{max-width:850px;position:relative}
+.timeline::before{
+  content:"";position:absolute;left:7px;top:0;bottom:0;width:1px;background:var(--border)
+}
+.timeline-item{position:relative;padding-left:50px;margin-bottom:48px}
+.timeline-item::before{
+  content:"";position:absolute;left:0;top:9px;width:15px;height:15px;
+  border-radius:50%;background:var(--bg);border:2px solid var(--green)
+}
+.year{color:var(--green);font-size:.78rem;letter-spacing:2px;margin-bottom:5px}
+.timeline-item p{color:var(--muted);font-size:.92rem;max-width:720px}
+.goal{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px
+}
+.goal-box{
+  padding:32px;border-radius:22px;border:1px solid var(--border);
+  background:linear-gradient(135deg,rgba(182,239,114,.08),rgba(255,255,255,.03))
+}
+.goal-box h3{font-size:1.35rem;margin-bottom:10px}
+.goal-box p{color:var(--muted)}
+.contact{text-align:center}
+.contact h2{font-size:clamp(3rem,8vw,7rem);line-height:1;letter-spacing:-4px;margin-bottom:25px}
+.contact p{max-width:600px;margin:auto;color:var(--muted);margin-bottom:28px}
+.contact-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.75rem}
+.footer-inner{display:flex;justify-content:space-between;gap:20px}
+.reveal{opacity:0;transform:translateY(25px);transition:all .8s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:800px){
+  .nav-links{display:none}
+  section{padding:80px 0}
+  .about-grid,.goal{grid-template-columns:1fr;gap:35px}
+  .cards{grid-template-columns:1fr}
+  .project{grid-template-columns:45px 1fr}
+  .arrow{display:none}
+  .footer-inner{flex-direction:column}
+}
+@media(max-width:500px){
+  .hero h1{font-size:3.35rem;letter-spacing:-3px}
+  .hero p{font-size:1rem}
+  .info-card,.card,.goal-box{padding:24px}
+  .project{padding:23px}
+}
+</style>
 </head>
 
 <body>
 
-    <!-- 導覽列 -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#home" class="logo">YN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">關於我</a></li>
+      <li><a href="#interests">興趣</a></li>
+      <li><a href="#skills">能力</a></li>
+      <li><a href="#projects">作品</a></li>
+      <li><a href="#journey">歷程</a></li>
+      <li><a href="#goals">未來</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <nav>
-        <div class="container nav-inner">
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="small-title">PSYCHOLOGY STUDENT · TAIWAN</div>
+      <h1>HELLO,<br>I'M <span class="green">陳宇彤.</span></h1>
+      <p>
+        我是台北市立大學心理與諮商學系的大一學生。
+        我喜歡透過閱讀不同領域的書籍拓展視野，也喜歡繪畫與美編。
+        我希望在心理學與創意之間，探索更多屬於自己的可能性。
+      </p>
+      <div class="quote">「不一定要按照既有的路走，想像力也可以成為探索世界的方法。」</div>
+      <div class="buttons">
+        <a href="#projects" class="btn btn-primary">查看我的作品 ↓</a>
+        <a href="https://github.com/U11514003" target="_blank" class="btn btn-secondary">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <a href="#home" class="logo">
-                YN<span>.</span>
-            </a>
+<section id="about">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">01 / ABOUT</div>
+      <h2 class="section-title">關於我</h2>
+      <p class="section-description">一個正在探索「人」、「知識」與「創意」的大學生。</p>
+    </div>
 
-            <ul class="nav-links">
-                <li><a href="#about">關於我</a></li>
-                <li><a href="#skills">能力</a></li>
-                <li><a href="#projects">作品</a></li>
-                <li><a href="#journey">學習歷程</a></li>
-                <li><a href="#contact">聯絡</a></li>
-            </ul>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>我目前就讀於<strong>台北市立大學心理與諮商學系</strong>，是一名大一學生。</p>
+        <p>
+          對我而言，心理學不只是課堂上的理論，更是一種理解人的方式。
+          我希望透過心理學與諮商相關知識的學習，逐漸培養觀察、傾聽、思考與溝通的能力。
+        </p>
+        <p>
+          除了心理學，我也喜歡閱讀不同領域的書籍，從不同觀點認識世界。
+          我對繪畫與美編工作也很有興趣，喜歡把腦中的想法轉化成視覺作品。
+        </p>
+        <p>
+          我的個性比較喜歡<strong>不按常理出牌</strong>，不害怕嘗試新的做法。
+          我相信想像力不只是創作的能力，也能讓我們用不同角度看待問題。
+        </p>
+      </div>
 
+      <div class="info-card reveal">
+        <div class="profile-circle">✦</div>
+        <ul class="info-list">
+          <li><span>學校</span><span>台北市立大學</span></li>
+          <li><span>系所</span><span>心理與諮商學系</span></li>
+          <li><span>年級</span><span>大一</span></li>
+          <li><span>興趣</span><span>閱讀・繪畫・美編</span></li>
+          <li><span>特質</span><span>想像力・創意・好奇</span></li>
+          <li><span>目前狀態</span><span>Exploring</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="interests">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">02 / INTERESTS</div>
+      <h2 class="section-title">我的興趣</h2>
+      <p class="section-description">從閱讀吸收知識，從繪畫與設計表達想法，也從想像力找到新的方向。</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-icon">📚</div>
+        <h3>跨領域閱讀</h3>
+        <p>我喜歡閱讀不同領域的書籍，接觸不同觀點，讓自己不只從單一角度理解世界。</p>
+        <div class="tags"><span class="tag">Reading</span><span class="tag">Knowledge</span><span class="tag">Curiosity</span></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🎨</div>
+        <h3>繪畫與創作</h3>
+        <p>繪畫是我表達想法與感受的方式之一，也讓我有機會把抽象的想法轉換成具體的畫面。</p>
+        <div class="tags"><span class="tag">Drawing</span><span class="tag">Visual Art</span><span class="tag">Creativity</span></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">✦</div>
+        <h3>美編與想像力</h3>
+        <p>我喜歡版面、色彩與視覺呈現，也喜歡不按照既有規則思考，嘗試比較有創意的做法。</p>
+        <div class="tags"><span class="tag">Design</span><span class="tag">Imagination</span><span class="tag">Visual Editing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">03 / SKILLS</div>
+      <h2 class="section-title">我正在學習</h2>
+      <p class="section-description">現在的我不需要什麼都會，重要的是保持好奇，持續累積。</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-icon">🧠</div>
+        <h3>Psychology</h3>
+        <p>建立心理學基礎，嘗試從不同角度理解人的行為、情緒與心理歷程。</p>
+        <div class="tags"><span class="tag">心理學</span><span class="tag">發展心理</span><span class="tag">諮商基礎</span></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">💬</div>
+        <h3>Communication</h3>
+        <p>培養傾聽、表達與團隊合作能力，學習讓不同想法之間產生連結。</p>
+        <div class="tags"><span class="tag">Listening</span><span class="tag">Teamwork</span><span class="tag">Communication</span></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">💻</div>
+        <h3>Digital & Design</h3>
+        <p>探索網頁設計、數位工具與美編，希望將科技與視覺創作應用在學習與作品中。</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Design</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">04 / PROJECTS</div>
+      <h2 class="section-title">我的作品</h2>
+      <p class="section-description">把課堂學習、數位創作與自己的興趣整理成可以被看見的成果。</p>
+    </div>
+
+    <div class="projects">
+      <a href="#home" class="project reveal">
+        <div class="project-number">01</div>
+        <div>
+          <h3>Personal Portfolio</h3>
+          <p>我的第一個個人作品集網站，使用 HTML、CSS 與 JavaScript 建立，練習網頁結構、視覺設計與 RWD。</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">RWD</span></div>
         </div>
-    </nav>
+        <div class="arrow">↗</div>
+      </a>
 
-
-    <!-- 首頁 -->
-
-    <section class="hero" id="home">
-
-        <div class="container">
-
-            <div class="hero-content reveal">
-
-                <div class="small-title">
-                    PSYCHOLOGY STUDENT · TAIPEI
-                </div>
-
-                <h1>
-                    HELLO,<br>
-                    I'M <span>陳宇彤.</span>
-                </h1>
-
-                <p>
-                    我是台北市立大學心理與諮商學系的大一學生。
-                    正在學習如何理解人、理解自己，
-                    也探索心理學、數位創作與不同領域之間的可能性。
-                </p>
-
-                <div class="buttons">
-
-                    <a href="#projects" class="btn btn-primary">
-                        查看我的作品 ↓
-                    </a>
-
-                    <!-- 把下面的網址換成你的 GitHub -->
-
-                    <a
-                        href="https://github.com/"
-                        target="_blank"
-                        class="btn btn-secondary"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-            </div>
-
+      <a href="#about" class="project reveal">
+        <div class="project-number">02</div>
+        <div>
+          <h3>Psychology Learning Notes</h3>
+          <p>整理心理學課程中的學習內容，將理論、案例與自己的理解整理成有系統的數位學習筆記。</p>
+          <div class="tags"><span class="tag">Psychology</span><span class="tag">Research</span><span class="tag">Writing</span></div>
         </div>
+        <div class="arrow">↗</div>
+      </a>
 
-    </section>
-
-
-    <!-- 關於我 -->
-
-    <section id="about">
-
-        <div class="container">
-
-            <div class="reveal">
-
-                <div class="section-number">
-                    01 / ABOUT
-                </div>
-
-                <h2 class="section-title">
-                    關於我
-                </h2>
-
-                <p class="section-description">
-                    一個正在探索「人」與「世界」的大學生。
-                </p>
-
-            </div>
-
-
-            <div class="about-grid">
-
-                <div class="about-text reveal">
-
-                    <p>
-                        我目前就讀於
-                        <strong>台北市立大學心理與諮商學系</strong>，
-                        是一名大一學生。
-                    </p>
-
-                    <p>
-                        對我而言，心理學不只是課堂上的理論，
-                        更是一種理解人的方式。
-                        我希望透過心理學與諮商相關知識的學習，
-                        培養觀察、傾聽與溝通的能力。
-                    </p>
-
-                    <p>
-                        同時，我也開始接觸網頁設計與數位工具。
-                        我相信跨領域學習能讓我們用更多元的方式
-                        表達想法、整理知識與解決問題。
-                    </p>
-
-                </div>
-
-
-                <div class="info-card reveal">
-
-                    <div class="profile-circle">
-                        ✦
-                    </div>
-
-                    <ul class="info-list">
-
-                        <li>
-                            <span>學校</span>
-                            <span>台北市立大學</span>
-                        </li>
-
-                        <li>
-                            <span>系所</span>
-                            <span>心理與諮商學系</span>
-                        </li>
-
-                        <li>
-                            <span>年級</span>
-                            <span>大一</span>
-                        </li>
-
-                        <li>
-                            <span>城市</span>
-                            <span>台北・台灣</span>
-                        </li>
-
-                        <li>
-                            <span>目前狀態</span>
-                            <span>Learning</span>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
+      <a href="#interests" class="project reveal">
+        <div class="project-number">03</div>
+        <div>
+          <h3>Reading & Visual Notes</h3>
+          <p>將閱讀不同領域書籍後的想法，結合繪畫與美編，以圖像、版面或數位筆記呈現自己的理解。</p>
+          <div class="tags"><span class="tag">Reading</span><span class="tag">Drawing</span><span class="tag">Visual Design</span></div>
         </div>
-
-    </section>
-
-
-    <!-- 能力 -->
-
-    <section id="skills">
-
-        <div class="container">
-
-            <div class="reveal">
-
-                <div class="section-number">
-                    02 / SKILLS
-                </div>
-
-                <h2 class="section-title">
-                    我正在學習
-                </h2>
-
-                <p class="section-description">
-                    現在的我不需要什麼都會，
-                    重要的是持續累積。
-                </p>
-
-            </div>
-
-
-            <div class="skills">
-
-
-                <div class="skill reveal">
-
-                    <div class="skill-icon">
-                        🧠
-                    </div>
-
-                    <h3>
-                        Psychology
-                    </h3>
-
-                    <p>
-                        建立心理學基礎，
-                        嘗試從不同角度理解人的行為、
-                        情緒與心理歷程。
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">心理學</span>
-                        <span class="tag">發展心理</span>
-                        <span class="tag">諮商基礎</span>
-                    </div>
-
-                </div>
-
-
-                <div class="skill reveal">
-
-                    <div class="skill-icon">
-                        💬
-                    </div>
-
-                    <h3>
-                        Communication
-                    </h3>
-
-                    <p>
-                        培養傾聽、表達與團隊合作能力，
-                        學習如何讓不同想法之間產生連結。
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">Listening</span>
-                        <span class="tag">Teamwork</span>
-                        <span class="tag">Communication</span>
-                    </div>
-
-                </div>
-
-
-                <div class="skill reveal">
-
-                    <div class="skill-icon">
-                        💻
-                    </div>
-
-                    <h3>
-                        Digital
-                    </h3>
-
-                    <p>
-                        開始探索網頁設計與程式設計，
-                        希望將數位工具應用在學習與創作中。
-                    </p>
-
-                    <div class="tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 作品 -->
-
-    <section id="projects">
-
-        <div class="container">
-
-            <div class="reveal">
-
-                <div class="section-number">
-                    03 / PROJECTS
-                </div>
-
-                <h2 class="section-title">
-                    我的作品
-                </h2>
-
-                <p class="section-description">
-                    每一個作品都是一次學習。
-                    不需要完美，但要持續進步。
-                </p>
-
-            </div>
-
-
-            <div class="projects">
-
-
-                <a href="#" class="project reveal">
-
-                    <div class="project-number">
-                        01
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Personal Portfolio
-                        </h3>
-
-                        <p>
-                            第一個個人作品集網站，
-                            使用 HTML、CSS 與 JavaScript 建立，
-                            練習網頁結構、視覺設計與 RWD。
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-
-                    </div>
-
-                    <div class="arrow">
-                        ↗
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="project reveal">
-
-                    <div class="project-number">
-                        02
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Psychology Learning Notes
-                        </h3>
-
-                        <p>
-                            整理心理學課程中的學習內容，
-                            將課堂理論、案例與個人反思
-                            整理成數位學習筆記。
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag">Psychology</span>
-                            <span class="tag">Research</span>
-                            <span class="tag">Writing</span>
-                        </div>
-
-                    </div>
-
-                    <div class="arrow">
-                        ↗
-                    </div>
-
-                </a>
-
-
-                <a href="#" class="project reveal">
-
-                    <div class="project-number">
-                        03
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Student Life Project
-                        </h3>
-
-                        <p>
-                            從大學生的生活經驗出發，
-                            思考學生壓力、時間管理與心理健康等議題，
-                            探索數位工具能如何協助學生。
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag">Psychology</span>
-                            <span class="tag">UX Thinking</span>
-                            <span class="tag">Research</span>
-                        </div>
-
-                    </div>
-
-                    <div class="arrow">
-                        ↗
-                    </div>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 學習歷程 -->
-
-    <section id="journey">
-
-        <div class="container">
-
-            <div class="reveal">
-
-                <div class="section-number">
-                    04 / JOURNEY
-                </div>
-
-                <h2 class="section-title">
-                    我的成長旅程
-                </h2>
-
-                <p class="section-description">
-                    四年的大學生活，
-                    我希望留下的不只是學分。
-                </p>
-
-            </div>
-
-
-            <div class="timeline">
-
-
-                <div class="timeline-item reveal">
-
-                    <div class="year">
-                        2026 · NOW
-                    </div>
-
-                    <h3>
-                        成為心理與諮商系學生
-                    </h3>
-
-                    <p>
-                        開始大學生活，接觸心理學、
-                        諮商與人類發展相關課程，
-                        逐漸建立自己的學習方向。
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item reveal">
-
-                    <div class="year">
-                        2026
-                    </div>
-
-                    <h3>
-                        First Digital Project
-                    </h3>
-
-                    <p>
-                        開始學習 HTML、CSS 與 JavaScript，
-                        完成第一個個人作品集網站。
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item reveal">
-
-                    <div class="year">
-                        2027 — 2028
-                    </div>
-
-                    <h3>
-                        Exploring & Building
-                    </h3>
-
-                    <p>
-                        持續累積心理學相關作品，
-                        並探索研究、設計、科技與心理學
-                        之間的交叉領域。
-                    </p>
-
-                </div>
-
-
-                <div class="timeline-item reveal">
-
-                    <div class="year">
-                        2029 · FUTURE
-                    </div>
-
-                    <h3>
-                        Build Something Meaningful
-                    </h3>
-
-                    <p>
-                        希望將大學期間累積的知識與能力，
-                        轉化成真正能對人產生價值的作品。
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 聯絡 -->
-
-    <section id="contact" class="contact">
-
-        <div class="container">
-
-            <div class="reveal">
-
-                <div class="section-number">
-                    05 / CONTACT
-                </div>
-
-                <h2>
-                    LET'S<br>
-                    <span>CONNECT.</span>
-                </h2>
-
-                <p>
-                    如果你對心理學、學生生活、
-                    數位創作或跨領域學習有興趣，
-                    歡迎與我交流。
-                </p>
-
-                <div class="contact-buttons">
-
-                    <!-- 把 Email 換成你的 -->
-
-                    <a
-                        href="mailto:your.email@example.com"
-                        class="btn btn-primary"
-                    >
-                        Email Me
-                    </a>
-
-                    <!-- 把 GitHub 換成你的 -->
-
-                    <a
-                        href="https://github.com/"
-                        target="_blank"
-                        class="btn btn-secondary"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Footer -->
-
-    <footer>
-
-        <div class="container footer-inner">
-
-            <div>
-                © 2026 陳宇彤
-            </div>
-
-            <div>
-                Psychology Student · Taipei City University
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <script>
-
-        /* 滾動動畫 */
-
-        const elements =
-            document.querySelectorAll(".reveal");
-
-        const observer =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach((entry) => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("show");
-
-                            observer.unobserve(entry.target);
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-        elements.forEach((element) => {
-            observer.observe(element);
-        });
-
-
-        /* 導覽列滾動效果 */
-
-        const nav = document.querySelector("nav");
-
-        window.addEventListener("scroll", () => {
-
-            if (window.scrollY > 50) {
-
-                nav.style.background =
-                    "rgba(11,13,18,0.95)";
-
-            } else {
-
-                nav.style.background =
-                    "rgba(11,13,18,0.8)";
-
-            }
-
-        });
-
-    </script>
+        <div class="arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">05 / JOURNEY</div>
+      <h2 class="section-title">我的學習歷程</h2>
+      <p class="section-description">大學不只是累積學分，也是慢慢找到自己方向的過程。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="year">2026 · NOW</div>
+        <h3>成為心理與諮商系學生</h3>
+        <p>開始大學生活，接觸心理學、諮商與人類發展相關課程，逐漸建立自己的學習方向。</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="year">2026</div>
+        <h3>開始數位創作</h3>
+        <p>學習 HTML、CSS 與 JavaScript，完成第一個個人作品集網站，也開始思考心理學與設計可以如何結合。</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="year">2027 — 2028</div>
+        <h3>Exploring & Building</h3>
+        <p>持續累積心理學相關作品，閱讀不同領域的書籍，並探索研究、設計、創作與心理學之間的可能性。</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="year">2029 · FUTURE</div>
+        <h3>Prepare for Graduate School</h3>
+        <p>以心理與諮商相關研究所為目標，準備碩士班考試，希望在大學期間建立扎實的心理學基礎與研究能力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="goals">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">06 / FUTURE</div>
+      <h2 class="section-title">未來目標</h2>
+      <p class="section-description">我希望把現在的好奇心，慢慢累積成未來能真正使用的專業能力。</p>
+    </div>
+
+    <div class="goal">
+      <div class="goal-box reveal">
+        <h3>🎓 心理與諮商研究所</h3>
+        <p>目前最明確的目標，是準備心理與諮商相關學系的碩士班考試，持續建立心理學與諮商領域的知識基礎。</p>
+      </div>
+
+      <div class="goal-box reveal">
+        <h3>📖 持續累積知識</h3>
+        <p>透過跨領域閱讀、課堂學習與自主探索，培養整理資訊、思考問題與形成自己觀點的能力。</p>
+      </div>
+
+      <div class="goal-box reveal">
+        <h3>🎨 發展創作能力</h3>
+        <p>持續接觸繪畫、美編與數位設計，希望未來能將視覺創意與心理學學習結合。</p>
+      </div>
+
+      <div class="goal-box reveal">
+        <h3>💡 保持想像力</h3>
+        <p>不把自己限制在單一答案裡，勇於嘗試不同方法，讓「不按常理出牌」成為探索新可能的優勢。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">07 / CONTACT</div>
+      <h2>LET'S<br><span class="green">CONNECT.</span></h2>
+      <p>如果你也對心理學、閱讀、創作或跨領域學習有興趣，歡迎與我交流。</p>
+      <div class="contact-buttons">
+        <a href="mailto:your.email@example.com" class="btn btn-primary">Email Me</a>
+        <a href="https://github.com/U11514003" target="_blank" class="btn btn-secondary">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 陳宇彤</div>
+    <div>Psychology Student · Taipei City University</div>
+  </div>
+</footer>
+
+<script>
+const elements=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+elements.forEach(el=>observer.observe(el));
+
+const nav=document.querySelector("nav");
+window.addEventListener("scroll",()=>{
+  nav.style.background=window.scrollY>50
+    ?"rgba(9,11,16,.96)"
+    :"rgba(9,11,16,.78)";
+});
+</script>
 
 </body>
 </html>
