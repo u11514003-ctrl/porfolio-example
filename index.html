@@ -147,6 +147,22 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
 .footer-inner{display:flex;justify-content:space-between;gap:20px}
 .reveal{opacity:0;transform:translateY(25px);transition:all .8s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
+
+.course-card{padding:32px;border:1px solid var(--border);border-radius:24px;background:linear-gradient(135deg,rgba(182,239,114,.10),rgba(255,255,255,.04));margin-bottom:28px;transition:.4s}
+.course-card:hover{transform:translateY(-5px);border-color:rgba(182,239,114,.45)}
+.course-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:24px}
+.course-label{color:var(--green);font-size:.75rem;letter-spacing:2px;margin-bottom:8px}
+.course-card h3{font-size:1.8rem;margin-bottom:8px}
+.course-card p{color:var(--muted);max-width:720px}
+.course-badge{padding:7px 12px;border:1px solid rgba(182,239,114,.3);border-radius:30px;color:var(--green);font-size:.75rem;white-space:nowrap}
+.assignments{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.assignment{min-height:180px;padding:24px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.035);transition:.35s;display:flex;flex-direction:column;justify-content:space-between}
+.assignment:hover{transform:translateY(-5px);border-color:rgba(182,239,114,.4);background:rgba(255,255,255,.06)}
+.assignment-number{color:var(--green);font-family:monospace;font-size:.8rem;margin-bottom:12px}
+.assignment h4{font-size:1.05rem;margin-bottom:7px}
+.assignment p{color:var(--muted);font-size:.82rem}
+.assignment-link{color:var(--green);font-size:.78rem;margin-top:18px}
+@media(max-width:1000px){.assignments{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){
   .nav-links{display:none}
   section{padding:80px 0}
@@ -306,10 +322,97 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
   </div>
 </section>
 
+<section id="courses">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-number">04 / COURSE</div>
+      <h2 class="section-title">我的課程</h2>
+      <p class="section-description">整理課堂學習與小作業，讓每一次練習都成為作品集的一部分。</p>
+    </div>
+
+    <div class="course-card reveal">
+      <div class="course-top">
+        <div>
+          <div class="course-label">COURSE · DIGITAL MEDIA</div>
+          <h3>數位媒材概論</h3>
+          <p>這裡可以放這門課的學習內容、課程介紹，以及我在課堂中完成的各項小作業。</p>
+        </div>
+        <div class="course-badge">COURSE 01</div>
+      </div>
+
+      <div class="assignments">
+        <a href="assignments/assignment01.html" class="assignment">
+          <div>
+            <div class="assignment-number">01</div>
+            <h4>小作業1</h4>
+            <p>將第1份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+        <a href="assignments/assignment02.html" class="assignment">
+          <div>
+            <div class="assignment-number">02</div>
+            <h4>小作業2</h4>
+            <p>將第2份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+        <a href="assignments/assignment03.html" class="assignment">
+          <div>
+            <div class="assignment-number">03</div>
+            <h4>小作業3</h4>
+            <p>將第3份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+        <a href="assignments/assignment04.html" class="assignment">
+          <div>
+            <div class="assignment-number">04</div>
+            <h4>小作業4</h4>
+            <p>將第4份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+        <a href="assignments/assignment05.html" class="assignment">
+          <div>
+            <div class="assignment-number">05</div>
+            <h4>小作業5</h4>
+            <p>將第5份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+        <a href="assignments/assignment06.html" class="assignment">
+          <div>
+            <div class="assignment-number">06</div>
+            <h4>小作業6</h4>
+            <p>將第6份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+        <a href="assignments/assignment07.html" class="assignment">
+          <div>
+            <div class="assignment-number">07</div>
+            <h4>小作業7</h4>
+            <p>將第7份小作業放在這裡。</p>
+          </div>
+          <div class="assignment-link">查看作業 ↗</div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="container">
     <div class="reveal">
-      <div class="section-number">04 / PROJECTS</div>
+      <div class="section-number">05 / PROJECTS</div>
       <h2 class="section-title">我的作品</h2>
       <p class="section-description">把課堂學習、數位創作與自己的興趣整理成可以被看見的成果。</p>
     </div>
@@ -351,7 +454,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
 <section id="journey">
   <div class="container">
     <div class="reveal">
-      <div class="section-number">05 / JOURNEY</div>
+      <div class="section-number">06 / JOURNEY</div>
       <h2 class="section-title">我的學習歷程</h2>
       <p class="section-description">大學不只是累積學分，也是慢慢找到自己方向的過程。</p>
     </div>
@@ -387,7 +490,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
 <section id="goals">
   <div class="container">
     <div class="reveal">
-      <div class="section-number">06 / FUTURE</div>
+      <div class="section-number">07 / FUTURE</div>
       <h2 class="section-title">未來目標</h2>
       <p class="section-description">我希望把現在的好奇心，慢慢累積成未來能真正使用的專業能力。</p>
     </div>
@@ -419,7 +522,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font
 <section id="contact" class="contact">
   <div class="container">
     <div class="reveal">
-      <div class="section-number">07 / CONTACT</div>
+      <div class="section-number">08 / CONTACT</div>
       <h2>LET'S<br><span class="green">CONNECT.</span></h2>
       <p>如果你也對心理學、閱讀、創作或跨領域學習有興趣，歡迎與我交流。</p>
       <div class="contact-buttons">
