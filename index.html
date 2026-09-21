@@ -6,7 +6,178 @@
 <meta name="description" content="陳宇彤｜台北市立大學心理與諮商學系個人作品集">
 <title>陳宇彤｜Personal Portfolio</title>
 
-<style>
+<style>/* ===== 馬卡龍配色 ===== */
+
+body{
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255,214,224,.55), transparent 25%),
+    radial-gradient(circle at 90% 15%, rgba(205,235,255,.55), transparent 25%),
+    radial-gradient(circle at 20% 85%, rgba(229,212,255,.45), transparent 25%),
+    radial-gradient(circle at 85% 80%, rgba(213,245,227,.5), transparent 25%),
+    var(--bg);
+  color:var(--text);
+}
+
+body::before{
+  background-image:
+    linear-gradient(rgba(120,100,120,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,100,120,.035) 1px,transparent 1px);
+}
+
+nav{
+  background:rgba(255,249,245,.88);
+  border-bottom:1px solid rgba(90,75,90,.1);
+}
+
+.nav-links a{
+  color:#817985;
+}
+
+.nav-links a:hover{
+  color:#C58FA0;
+}
+
+.logo span,
+.green,
+.small-title,
+.section-number,
+.project-number,
+.assignment-number,
+.assignment-link,
+.course-label,
+.year{
+  color:#C58FA0;
+}
+
+.hero p,
+.section-description,
+.about-text p,
+.card p,
+.project p,
+.timeline-item p,
+.goal-box p,
+.course-card p,
+.assignment p,
+.contact p{
+  color:#817985;
+}
+
+.quote{
+  border-left-color:#C58FA0;
+  color:#6F6570;
+}
+
+.btn-primary{
+  background:#FFD6E0;
+  color:#5F4B55;
+}
+
+.btn-primary:hover{
+  background:#FFC2D1;
+}
+
+.btn-secondary{
+  border:1px solid rgba(197,143,160,.3);
+  color:#6F6570;
+}
+
+.btn-secondary:hover{
+  background:#FFF1F5;
+}
+
+.info-card,
+.card,
+.project,
+.assignment{
+  background:rgba(255,255,255,.72);
+  border-color:rgba(90,75,90,.12);
+}
+
+.info-card:hover,
+.card:hover,
+.project:hover,
+.assignment:hover{
+  border-color:rgba(197,143,160,.4);
+}
+
+.profile-circle{
+  background:#FFF1B8;
+  color:#B98B4A;
+}
+
+.tag{
+  background:#F8F1FF;
+  border-color:#E5D4FF;
+  color:#817985;
+}
+
+.project:hover{
+  background:#FFF8FA;
+}
+
+.goal-box{
+  background:linear-gradient(
+    135deg,
+    rgba(255,214,224,.45),
+    rgba(205,235,255,.35)
+  );
+}
+
+.course-card{
+  background:linear-gradient(
+    135deg,
+    rgba(255,214,224,.45),
+    rgba(229,212,255,.35)
+  );
+  border-color:rgba(197,143,160,.2);
+}
+
+.course-badge{
+  border-color:#CDEBFF;
+  color:#7899B8;
+  background:#F4FAFF;
+}
+
+.assignment{
+  background:rgba(255,255,255,.8);
+}
+
+.assignment:nth-child(1){
+  border-top:4px solid #FFD6E0;
+}
+
+.assignment:nth-child(2){
+  border-top:4px solid #CDEBFF;
+}
+
+.assignment:nth-child(3){
+  border-top:4px solid #E5D4FF;
+}
+
+.assignment:nth-child(4){
+  border-top:4px solid #D5F5E3;
+}
+
+.assignment:nth-child(5){
+  border-top:4px solid #FFF1B8;
+}
+
+.assignment:nth-child(6){
+  border-top:4px solid #FFD6E0;
+}
+
+.assignment:nth-child(7){
+  border-top:4px solid #CDEBFF;
+}
+
+.assignment:hover{
+  background:#FFFDFB;
+}
+
+footer{
+  border-top-color:rgba(90,75,90,.12);
+  color:#817985;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#090b10;
