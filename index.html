@@ -1100,12 +1100,7 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:.12});
 elements.forEach(el=>observer.observe(el));
 
-const nav=document.querySelector("nav");
-window.addEventListener("scroll",()=>{
-  nav.style.background=window.scrollY>50
-    ?"rgba(9,11,16,.96)"
-    :"rgba(9,11,16,.78)";
-});
+
 </script>
 
 </body>
